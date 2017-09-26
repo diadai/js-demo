@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>type discriminant  </title>
+</head>
+<script>
+    //未完成的代码
+
+    window.onload=function(){
+        var oDiv=document.getElementById('all');
+        var oInp=oDiv.getElementsByTagName('input');
+        var oP=oDiv.getElementsByTagName('p')[0];
+        var str=oInp[0].value;
+        alert(typeof str);
+
+        oInp[1].onclick=function () {
+            if( str===str && !isNaN(str)){
+                oP.innerHTML='这是一个数字';
+            }
+
+            if(typeof str==='string'){
+                oP.innerHTML='这是一个字符';
+            }
+        };
+    };
+</script>
+<body>
+<div id="all">
+    请输入测试内容：
+    <input type="text"  name="text">
+    <input type="button" value="测试" name="button">
+    <p>
+
+    </p>
+</div>
+</body>
+</html>
