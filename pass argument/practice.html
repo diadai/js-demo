@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+//        var a=1;       //1 预解析时，解析为undefined，这是全局变量
+//        function f1(){ //2 预解析函数，函数就是一个整体保存
+//            alert(a);  //5 undefined  这里的a是局部变量，预解析时为undefined
+//            var a=2;   //4 预解析时，解析为undefined，这是局部变量
+//        }
+//        f1();          //3 函数调用时。会返回函数内部预解析
+//        alert(a);     //6 逐行解读代码，这里的a是全局变量，为1
+
+/*
+         var a=1;       //1 预解析时，解析为undefined，逐行解读代码的时候为1
+         function f1(){  //2 预解析函数，函数就是一个整体保存
+             alert(a);   //4 函数里面没有var定义变量，就返回上一级找，上一级有a=1，这里的a就是1
+             a = 2;      //5 这是一个表达式，修改了a的值，这里修改的是全局a的值
+         }
+         f1();           //3 函数调用时。会返回函数内部预解析
+         alert(a);       //6 由于全局变量a的值在函数内部被修改 所以这里是 2
+
+
+var a=1;          //1 预解析时，解析为undefined，逐行解读代码的时候为1
+function f1(a){   //2 预解析函数，函数就是一个整体保存 其中参数a实际上是 var a，局部变量
+        alert(a); //4 参数是var a;那么预解析就是undefined，所以弹出undefined
+        a=2;      //5 赋值给a a=5
+}
+f1();             //3 函数调用时。会返回函数内部预解析
+alert(a);         //6 这里的a是全局变量 没有变还是1
+
+
+var a=1;
+function f1(a){  //这里的参数是 var a，要是函数调用时传了参数，这里就是var a=参数；参数为1，所以这里的a=1
+    alert(a);    //1
+    a=2;         //赋值给局部变量 a=2
+}
+f1(a);          //这里的参数就是全局变量，a=1
+alert(a);       //这是全局变量 没有改变 为 1
+
+alert(a);  //function a(){alert();}
+var a=1;
+alert(a);  //1
+function a(){alert(2);}
+alert(a);  //1
+var a=3;
+alert(a);  //3
+function a(){alert(4);}
+alert(a);  //3
+
+var str='';
+function f1(){
+    var a='大龙虾';
+    str=a;
+}
+ f1();
+alert(str);
+
+function f2(){
+    var a='大龙虾';
+    f3(a);
+}
+f2();
+function f3(a){
+    alert(a);
+}
+ */
+
+    </script>
+
+
+</head>
+<body>
+
+</body>
+</html>

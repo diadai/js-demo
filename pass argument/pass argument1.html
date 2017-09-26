@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pass argument1</title>
+</head>
+<style>
+
+    li{list-style: none;}
+</style>
+<script>
+    window.onload=function () {
+      var oUl=document.getElementById('list');
+      var oLi=oUl.getElementsByTagName('li');
+      for(var i=0;i<oLi.length;i++){
+          f1(oLi[i]);
+      }
+
+      function f1( oLi) {
+          var oBut=oLi.getElementsByTagName('input');
+          var oSpan=oLi.getElementsByTagName('span');
+          var num1=parseInt(oSpan[0].innerHTML);    //'0'是个字符串
+          var num2=parseFloat(oSpan[1].innerHTML);
+          oBut[1].onclick=function () {
+              num1++;
+             oSpan[0].innerHTML=num1;
+             oSpan[2].innerHTML=num2*num1+'元';
+          };
+          oBut[0].onclick=function () {
+              if(num1>0) {
+                  num1--;
+                  oSpan[0].innerHTML = num1;
+                  oSpan[2].innerHTML = num2 * num1 + '元';
+              }
+              else{num1=0;}
+          };
+      }
+
+
+    };
+</script>
+<body>
+<ul id="list">
+
+<li>
+<input type="button" value="-">
+<span>0</span>
+<input type="button" value="+">
+    单价：<span>13.5元</span>  合计：<span>0元</span>
+</li>
+
+<li>
+<input type="button" value="-">
+<span>0</span>
+<input type="button" value="+">
+单价：<span>4元</span>  合计：<span>0元</span>
+</li>
+
+<li>
+<input type="button" value="-">
+<span>0</span>
+<input type="button" value="+">
+单价：<span>8.5元</span>  合计：<span>0元</span>
+</li>
+
+<li>
+<input type="button" value="-">
+<span>0</span>
+<input type="button" value="+">
+单价：<span>9.25元</span>  合计：<span>0元</span>
+</li>
+
+<li>
+<input type="button" value="-">
+<span>0</span>
+<input type="button" value="+">
+单价：<span>22元</span>  合计：<span>0元</span>
+</li>
+
+</ul>
+<p>
+    合计：<span>0件</span>
+    共计：<span>0元</span>
+    最多件数是：<span>0件</span>
+</p>
+
+</body>
+</html>
