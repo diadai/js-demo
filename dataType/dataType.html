@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title> data type </title>
+</head>
+<script>
+    window.onload=function () {
+        var arr = ['100px', 'abc' - 6, [], -98765, 34, -2, 0, '300', function () {alert(1);},
+            null, document, true, '200px' - 30, '23.45元', 5, Number('abc'), function () {alert(3);}];
+
+        var osP = document.getElementsByTagName('span');
+        var string = '';
+        var num=0;
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] === arr[i] && typeof arr[i] === 'number') {
+                //string += arr[i];
+                //document.write(arr[i]+' ');
+                osP[0].innerHTML+=arr[i]+' ';
+            }
+            if(parseFloat(arr[i])===parseFloat(arr[i]))  //parseFloat()和parseInt()只能转换字符串，其他的结果都是NaN
+            {
+                osP[1].innerHTML+=arr[i]+' ';
+                if(parseFloat(arr[i])>num) {
+                    num=parseFloat(arr[i]);
+                }
+                osP[2].innerHTML=num;
+            }
+            if (arr[i] != arr[i] && typeof arr[i] === 'number')
+            {
+                osP[3].innerHTML+=i+'  ';
+            }
+        }
+
+    };
+</script>
+<body>
+<p>
+    其中的数字是：<span></span><br>
+    其中可以转成数字的是：<span></span><br>
+    其中可以转换成数字当中最大的是：<span></span><br>
+    其中NaN的位置是:<span></span>
+</p>
+</body>
+</html>
