@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>about-this</title>
+</head>
+<style>
+    body{background: lightblue;}
+    div{width:550px;height:350px;margin:auto;background: white;text-align: center;padding-top:20px;
+    }
+    img{width:450px;}
+    ul{margin: 15px auto;width: 510px;padding: 0;text-align: center}
+    li{list-style: none;width: 50px;height:30px;background: gainsboro;
+        display:inline-block;margin-left:10px;}
+    p{margin: 5px 0;padding: 0;}
+    .active{background: coral;}
+</style>
+<script>
+    window.onload=function () {
+        var oDiv = document.getElementById('all');
+        var oImg =oDiv.getElementsByTagName('img')[0];
+        var oP =oDiv.getElementsByTagName('p');
+        var oLi = document.getElementsByTagName('li');
+        var arrText = ['图片一', '图片二', '图片三', '图片四'];
+        var arrSrc = ['img/c1.jpg', 'img/c2.jpg', 'img/c3.jpg', 'img/c6.jpg'];
+        var arrAct=oLi[0];//存储li数组
+        var num=0;
+        //初始化
+        function fun(){
+
+            oLi[num].className = 'active';
+            oP[1].innerHTML = arrText[num];
+            oP[0].innerHTML = 1 + num + '/' + arrText.length;
+            oImg.src = arrSrc[num];
+
+
+        }
+        fun();
+        for(var i=0;i<oLi.length;i++) {
+            oLi[i].index = i; //索引值
+            oLi[i].onclick = function () {
+                num=this.index;
+                fun();
+                //方法一：全部清空 赋值给当前的
+                /*
+                 for(var i=0;i<oLi.length;i++) {
+                 oLi[i].className = '';
+                 }
+                 this.className='active';
+                 */
+
+                //方法二
+                arrAct.className='';//把上一个清空
+                arrAct=this;//把当前赋给arrAct
+                arrAct.className='active';
+
+            };
+
+        }
+
+    };
+</script>
+<body>
+
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<div id="all" >
+    <p>1/4</p>
+    <img src="img/c1.jpg">
+    <p>图片一</p>
+</div>
+</body>
+</html>
