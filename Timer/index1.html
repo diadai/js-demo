@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{width:200px;height:400px;background: red;}
+        #div2{width:200px;height:200px;background: yellow;position:absolute;top:10px;left: 220px;display: none;}
+
+    </style>
+    <script src="cxm.js"></script>
+    <script>
+        $(function () {
+            var Div1=$('div1');
+            var Div2=$('div2');
+
+            Div1.onmouseover=show;
+            Div1.onmouseout=hide;
+
+            Div2.onmouseover=show;
+            Div2.onmouseout=hide;
+            var timer=null;
+
+            function show() {
+                clearInterval(timer);
+                Div2.style.display='block';
+            }
+            function hide() {
+               timer= setInterval(function () {
+                    Div2.style.display='none';
+                },300);
+
+            }
+        });
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+</body>
+</html>

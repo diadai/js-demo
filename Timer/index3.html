@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "UTF-8" />
+    <title></title>
+    <style type="text/css">
+        *{padding: 0;margin: 0;}
+        #ul{width:518px;height: 34px;line-height:34px;background:#4a73ad;border:1px solid #21639c;border-radius: 10px;position: relative;}
+        #ul li{float:left;list-style: none;border-left:#ced6e7 1px solid;border-top: none;border-bottom: none;height: 26px;line-height: 26px;padding:0 4px;margin:4px 0;}
+        #ul li:first-child{border:none;}
+        #ul li a{float:left;padding:0 20px;color: #fff;font-size: 16px;height: 26px;line-height: 26px;text-align: center;text-decoration: none;}
+        #ul li .hover{background: #7b9cc6;border-radius: 10px;}
+        #ul span{position:absolute;right: 16px;color: #fff;}
+        #ul li div{position: absolute;top:42px;background:url(img/000.jpg);border:1px solid #94b5d6;border-radius: 10px;padding: 0 10px;display: none;}
+        #ul li div img{position: absolute;top:-8px;left: 20px;}
+
+        #ul li div a{float:none;color: #215a94;font-size: 12px;padding: 0;line-height:14px;text-align: center;}
+
+        #ul li div a:hover{border-bottom: 2px solid #215a9c;background: none;border-radius:1px;}
+        .block{display: block;}
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <ul id="ul">
+        <li>
+            <a href="#">首页</a>
+            <div class="list">
+                <a href="">最近更新</a>
+                <a href="">活动</a>
+                <a href="">才是大试听</a>
+                <a href="">反馈</a>
+
+            </div>
+        </li>
+        <li><a href="#">关于我们</a>
+            <div class="list">
+                <a href="">欧巴桑讲师</a>
+                <a href="">独角兽方式</a>
+                <a href="">学习理念</a>
+                <a href="">联系我们</a>
+            </div>
+        </li>
+        <li><a href="#">作品</a>
+            <div class="list">
+                <a href="">班固</a>
+                <a href="">留学e网</a>
+                <a href="">学习理念</a>
+                <a href="">联系我们</a>
+            </div>
+        </li>
+        <li><a href="#">博客</a>
+            <div class="list">
+                <a href="">JS教程</a>
+                <a href="">HTML教程</a>
+                <a href="">CSS教程</a>
+                <a href="">弹出层效果</a>
+            </div>
+        </li>
+        <span>>>更多</span>
+    </ul>
+
+
+</div>
+</body>
+<script type="text/javascript">
+    var oUl = document.getElementById('ul');
+    var oLi = oUl.getElementsByTagName('li');
+    var oDiv = oUl.getElementsByTagName('div');
+    var n,len = oLi.length,timer=null;timer2=null;
+    for(var i=0;i<len;i++)
+    {
+        var oA = oLi[i].getElementsByTagName('a')[0];
+        var aA = oLi[0].getElementsByTagName('a')[0];
+        var aDiv = oUl.getElementsByTagName('div')[0];
+        oA.index = i;
+
+        oA.onmouseover = function()//鼠标移入一级a标签
+        {
+            clearTimeout(timer);
+            aA.className = '';
+            this.className = 'hover';
+            aA = this;
+            aDiv.style.display = 'none';
+            oDiv[this.index].style.display = 'block';//二级菜单显示
+            aDiv = oDiv[this.index];
+        };
+        oA.onmouseout = function()//鼠标移出一级a标签
+        {
+            n=this.index;
+            timer=setTimeout(function(){
+                oDiv[n].style.display = 'none';//二级菜单间隔0.2S后消失
+            },200);
+        };
+
+        oDiv[i].onmouseover = function()//鼠标移入二级菜单显示
+        {
+            clearTimeout(timer);//清除定时器是为了解决在显示的时候触发消失定时器
+            this.style.display = 'block';
+        };
+        oDiv[i].onmouseout = function()//鼠标移出二级菜单消失
+        {
+            this.style.display = 'none';
+
+        }
+    }
+</script>
+</html>
