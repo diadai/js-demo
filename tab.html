@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab</title>
+    <style>
+        #tab{
+            width:99%;
+            margin: auto;
+        }
+        ul{width:100%;margin:20px auto;padding: 0;text-align: center;}
+        li{
+            width: 19%;
+            list-style: none;
+            line-height: 2.5em;
+            display: inline-table;
+            background-color: #e4b9c0;
+            cursor: default;
+        }
+        li:hover{background-color: #c7254e;}
+        .content{
+            width:96%;
+            margin: auto;
+            background-color: aquamarine;
+            text-align: center;
+            height: 200px;
+        }
+        .content div {
+            display: none;
+        }
+        .content .show{
+            width: 100%;
+            display: block;
+            background-color: #adadad;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+    <ul>
+        <li>团队介绍</li>
+        <li>团队成就</li>
+        <li>团队生活</li>
+        <li>团队成员</li>
+        <li>团队引力</li>
+    </ul>
+
+    <div class="content">
+        <div class="each show">简介</div>
+        <div class="each">时间线 荣誉展示</div>
+        <div class="each">平时生活照片</div>
+        <div class="each">地图</div>
+        <div class="each">优点  条件</div>
+    </div>
+</div>
+<script>
+    var oul=document.getElementById("tab");
+    var oli=oul.getElementsByTagName("li");
+    var odiv=oul.getElementsByTagName("div")[0].getElementsByTagName("div");
+    var len=oli.length;
+    function show() {
+        for(var i=0; i<len;i++){
+            if(oli[i]===this){
+                odiv[i].className="show";
+            }
+            else{odiv[i].className=""}//不加each
+        }
+    }
+
+    /*
+     for(var i=0;i<len;i++){
+     oli[i].index=i;
+     oli[i].onclick=function () {
+     show(this.index);
+     };
+     }
+     */
+    (function changeTab(){
+        for( var i=0;i<len;i++){
+            oli[i].onclick=show;
+        }
+    })();
+</script>
+</body>
+</html>

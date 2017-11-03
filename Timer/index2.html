@@ -4,40 +4,93 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+        *{padding: 0;}
         body{background: gainsboro;}
         #all{
-            padding:10px;background: white;width: 400px; }
+            padding:10px;background: white;width: 400px;border-radius: 5px;}
         ul{
-            width:400px;
+            width:380px;
             height:50px;
             background-color:lightblue;
             display: table-cell;
             vertical-align: middle;
-            padding: 0;
+            padding-left: 20px;
             text-align: center;
+            position: relative;
         }
         li{
+            height: 30px;
+            line-height: 30px;
             list-style: none;
-            display: inline-block;
-            padding: 5px;
-            border-radius: 20%;}
-        li:hover{background-color: aliceblue;cursor: default;}
-        #div2{height: 10px;background: wheat;}
+            float: left;
+            border-radius:10px;
+            }
+        .first-title{float:left;height:30px;line-height:30px;padding: 0 13px;font-size: 16px;text-decoration: none;color: black}
+        li:hover{background-color: aliceblue;}
+        #aul li div{position: absolute;top:50px;background-color: bisque;padding: 0 10px; border-radius: 5px;display: none;}
+        #aul li div a{text-decoration: none;color: #21639c;font-size: 14px;}
     </style>
+    <script src="cxm.js"></script>
+    <script>
+        $(function () {
+
+            var aul=$("aul");
+           var oLi=aul.getElementsByTagName('li');
+           var oDiv=aul.getElementsByTagName('div');
+
+
+             for(i=0;i<=oLi.length;i++){
+                 var aA=oDiv[0].getElementsByTagName('a')[0];
+                 var oA=oLi[i].getElementsByTagName('a')[0];
+
+                   oA.onmouseover=function show() {
+                       oDiv[this.index].style.display='block';
+                   };  //为什么不是show();
+            }
+
+
+
+        });
+
+    </script>
 </head>
 <body>
 <div id="all">
-    <div id="div1">
-        <ul>
-            <li>首页</li>
-            <li>关于我们</li>
-            <li>作品</li>
-            <li>博客</li>
-            <li>更多</li>
+        <ul id="aul">
+            <li>
+                <a class="first-title" href="#">首页</a>
+                <div>
+                    <a href="#">数学</a>
+                    <a href="#">语文</a>
+                    <a href="#">英语</a>
+                    <a href="#">体育</a>
+                </div>
+            </li>
+            <li>
+                <a class="first-title" href="#">关于我们</a>
+                <div>
+                    <a href="#">李三</a>
+                    <a href="#">王麻子</a>
+                    <a href="#">张几</a>
+                </div>
+            </li>
+            <li>
+                <a class="first-title" href="#">作品</a>
+                <div>
+                    <a href="#">一天</a>
+                    <a href="#">两天</a>
+                    <a href="#">三天</a>
+                </div>
+            </li>
+            <li>
+                <a class="first-title" href="#">博客</a>
+                <div>
+                    <a href="#">快乐</a>
+                    <a href="#">不快乐</a>
+                </div>
+            </li>
+            <li><a class="first-title" href="#"> &lt;&lt;更多 </a></li>
         </ul>
-    </div>
-    <div id="div2">
-    </div>
 </div>
 </body>
 </html>
